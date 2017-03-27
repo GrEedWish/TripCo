@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trip >
+
+<leg >
+<sequence >1</sequence>
+<start >Wolf Creek</start>
+<finish >Purgatory</finish>
+<mileage >57</mileage>
+</leg>
+
+<leg >
+<sequence >2</sequence>
+<start >Purgatory</start>
+<finish >Silverton</finish>
+<mileage >19</mileage>
+</leg>
+
+<leg >
+<sequence >3</sequence>
+<start >Silverton</start>
+<finish >Telluride</finish>
+<mileage >10</mileage>
+</leg>
+
+<leg >
+<sequence >4</sequence>
+<start >Telluride</start>
+<finish >Powderhorn</finish>
+<mileage >79</mileage>
+</leg>
+
+<leg >
+<sequence >5</sequence>
+<start >Powderhorn</start>
+<finish >Steamboat</finish>
+<mileage >119</mileage>
+</leg>
+
+<leg >
+<sequence >6</sequence>
+<start >Steamboat</start>
+<finish >Estes Valley</finish>
+<mileage >67</mileage>
+</leg>
+
+<leg >
+<sequence >7</sequence>
+<start >Estes Valley</start>
+<finish >Eldora Mountain</finish>
+<mileage >23</mileage>
+</leg>
+
+<leg >
+<sequence >8</sequence>
+<start >Eldora Mountain</start>
+<finish >Echo Mountain</finish>
+<mileage >17</mileage>
+</leg>
+
+<leg >
+<sequence >9</sequence>
+<start >Echo Mountain</start>
+<finish >Winter Park</finish>
+<mileage >18</mileage>
+</leg>
+
+<leg >
+<sequence >10</sequence>
+<start >Winter Park</start>
+<finish >Vail</finish>
+<mileage >36</mileage>
+</leg>
+
+<leg >
+<sequence >11</sequence>
+<start >Vail</start>
+<finish >Breckenridge</finish>
+<mileage >20</mileage>
+</leg>
+
+<leg >
+<sequence >12</sequence>
+<start >Breckenridge</start>
+<finish >Ski Cooper</finish>
+<mileage >16</mileage>
+</leg>
+
+<leg >
+<sequence >13</sequence>
+<start >Ski Cooper</start>
+<finish >Aspen mountain</finish>
+<mileage >30</mileage>
+</leg>
+
+<leg >
+<sequence >14</sequence>
+<start >Aspen mountain</start>
+<finish >Crested Butte</finish>
+<mileage >21</mileage>
+</leg>
+
+<leg >
+<sequence >15</sequence>
+<start >Crested Butte</start>
+<finish >Monarch</finish>
+<mileage >43</mileage>
+</leg>
+
+<leg >
+<sequence >16</sequence>
+<start >Monarch</start>
+<finish >Wolf Creek</finish>
+<mileage >77</mileage>
+</leg>
+
+</trip>

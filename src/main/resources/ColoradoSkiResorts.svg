@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<svg width="1067" height="783" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg">
+<g >
+<title >leg1</title>
+<line x1="349" y1="662" x2="205" y2="634" stroke="blue" stroke-width="3" />
+<text x="349" y="662" font-size="16" id="loc1" font-family="Sans-serif">1</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="205" y1="634" x2="225" y2="589" stroke="blue" stroke-width="3" />
+<text x="205" y="634" font-size="16" id="loc1" font-family="Sans-serif">5</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="225" y1="589" x2="200" y2="580" stroke="blue" stroke-width="3" />
+<text x="225" y="589" font-size="16" id="loc1" font-family="Sans-serif">4</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="200" y1="580" x2="157" y2="380" stroke="blue" stroke-width="3" />
+<text x="200" y="580" font-size="16" id="loc1" font-family="Sans-serif">2</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="157" y1="380" x2="348" y2="133" stroke="blue" stroke-width="3" />
+<text x="157" y="380" font-size="16" id="loc1" font-family="Sans-serif">7</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="348" y1="133" x2="528" y2="164" stroke="blue" stroke-width="3" />
+<text x="348" y="133" font-size="16" id="loc1" font-family="Sans-serif">13</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="528" y1="164" x2="521" y2="225" stroke="blue" stroke-width="3" />
+<text x="528" y="164" font-size="16" id="loc1" font-family="Sans-serif">14</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="521" y1="225" x2="530" y2="270" stroke="blue" stroke-width="3" />
+<text x="521" y="225" font-size="16" id="loc1" font-family="Sans-serif">15</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="530" y1="270" x2="496" y2="234" stroke="blue" stroke-width="3" />
+<text x="530" y="270" font-size="16" id="loc1" font-family="Sans-serif">12</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="496" y1="234" x2="409" y2="278" stroke="blue" stroke-width="3" />
+<text x="496" y="234" font-size="16" id="loc1" font-family="Sans-serif">16</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="409" y1="278" x2="456" y2="306" stroke="blue" stroke-width="3" />
+<text x="409" y="278" font-size="16" id="loc1" font-family="Sans-serif">10</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="456" y1="306" x2="419" y2="327" stroke="blue" stroke-width="3" />
+<text x="456" y="306" font-size="16" id="loc1" font-family="Sans-serif">11</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="419" y1="327" x2="344" y2="357" stroke="blue" stroke-width="3" />
+<text x="419" y="327" font-size="16" id="loc1" font-family="Sans-serif">9</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="344" y1="357" x2="325" y2="409" stroke="blue" stroke-width="3" />
+<text x="344" y="357" font-size="16" id="loc1" font-family="Sans-serif">8</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="325" y1="409" x2="415" y2="477" stroke="blue" stroke-width="3" />
+<text x="325" y="409" font-size="16" id="loc1" font-family="Sans-serif">6</text>
+</g>
+<g >
+<title >leg1</title>
+<line x1="415" y1="477" x2="349" y2="662" stroke="blue" stroke-width="3" />
+<text x="415" y="477" font-size="16" id="loc1" font-family="Sans-serif">3</text>
+</g>
+<text x="570" y="29" font-size="24" id="maptitle" font-family="Sans-serif" text-anchor="middle">Colorado - ColoradoSkiResorts</text>
+<text x="570" y="768" font-size="24" id="mapfooter" font-family="Sans-serif" text-anchor="middle">652 miles</text>
+</svg>
