@@ -47,13 +47,10 @@ public class SVGWriter {
     private void readFile(String filename){
     	// Init string	
     	try {
-			BufferedReader readSVG;
-                        readSVG = new BufferedReader(new FileReader(filename));
-			
-			String line;
+			BufferedReader readSVG = new BufferedReader(new FileReader(filename));
 			
 			// Read in a line from the SVG and trim the whitespace (may remove trimming later)
-			line = readSVG.readLine().trim();
+			String line = readSVG.readLine().trim();
 			// svg: true if the <svg> element is currently being read
 			boolean svg = false;
 			// Read from the SVG until the file ends or the SVG element ends
@@ -65,9 +62,8 @@ public class SVGWriter {
 					continue;
 				}
 				// mark svg to true now that svg tag has started
-				if (line.contains("<svg")) {
+				if (line.contains("<svg"))
 					svg = true;
-				}
 				// if in svg tag
 				if (svg) {
 					// split on quotes to isolate values of attributes
@@ -75,17 +71,14 @@ public class SVGWriter {
 					// loop through the svg tag
 					for (int i = 0; i < strings.length; i++) {
 						// extract the width from the svg
-						if (strings[i].contains("width")) {
+						if (strings[i].contains("width"))
 							width = Double.parseDouble(strings[i + 1]);
-						}
 						// extract the height from the svg
-						if (strings[i].contains("height")) {
+						if (strings[i].contains("height")) 
 							height = Double.parseDouble(strings[i + 1]);
-						}
 						// if the svg tag is over, stop searching for height and width
-						if (strings[i].contains(">")) {
+						if (strings[i].contains(">")) 
 							svg = false;
-						}
 					}
 				}
 				// add each element of the SVG to the start of the write queue
@@ -93,15 +86,12 @@ public class SVGWriter {
 				// read the next line
 				line = readSVG.readLine().trim();
 			}
+
 			// if end of document reached without seeing "</svg>, svg is invalid"
-			if (line == null) {
-				readSVG.close();
-				throw new IOException();
+			// else add </svg> to the end of the write queue
+			if (!line.contains("svg") ) throw new IOException();
+			else footer.add("</svg>");
 				
-			} else {
-				// add </svg> to the end of the write queue
-				footer.add("</svg>");
-			}
 			// close the buffered writer
 			readSVG.close();
 
@@ -315,9 +305,8 @@ public class SVGWriter {
     public ArrayList<String> writeSVG(String filename) {
     	ArrayList<String> testData = new ArrayList<String>();
     	testData.addAll(header);
-    	if (originalContent != null) {
+    	if (originalContent != null)
     		testData.addAll(originalContent);
-    	}
     	testData.addAll(content);
     	testData.addAll(footer);
 		String loc = System.getProperty("user.dir");
@@ -331,28 +320,22 @@ public class SVGWriter {
 			// New BufferedWriter with filename of original input file
     		BufferedWriter write = new BufferedWriter(new FileWriter(loc + filename));
 			// Write the contents of the original SVG, as well as whatever header elements added
-			for (String s: header) {
+			for (String s: header) 
 				write.write(s + "\n");
-			}
 
 			// Write the old SVG if it exists
-			if (originalContent != null) {
-				for (String s: originalContent) {
+			if (originalContent != null)
+				for (String s: originalContent)
 					write.write(s + "\n");
-				}
-			}
     		
 			// Write the newly added SVG content
-    		for (String s : content) {
-    			write.write(s);
-    			write.write("\n");
-    		}
+    		for (String s : content)
+    			write.write(s + "\n");
 
 			// Close the content of the original SVG
-    		for (String s: footer) {
-    			write.write(s);
-    			write.write("\n");
-    		}
+    		for (String s: footer) 
+    			write.write(s + "\n");
+    		
     		write.close();
     		
     	} catch (IOException e) {
