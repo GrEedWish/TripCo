@@ -61,9 +61,9 @@ public class LocationList{
 		String extras 	= "";
 		String template = "";
 		String id 		= "";
-		boolean flag = false;
 		String parts[] = line.split(cvsSplitRegex);
 		for(int i = 0; i < parts.length; i++){
+			
 			String valid = parts[i].trim();
 			String title = titles[i].trim();
 
@@ -92,10 +92,12 @@ public class LocationList{
 		}
 
 		Location loc = new Location(name, latitude, longitude, id, extras, template);
+		
 		// Add the location if it's valid AND 
 		// the location is either in the selection or a selection is not being used
-		if(checkValid(loc) == true && (!useSelection || Arrays.asList(selection).contains(id)))
+		if(checkValid(loc) == true && (!useSelection || Arrays.asList(selection).contains(id))){
 			locList.add(loc);
+		}
 	}
 
 	// checkValid - private function

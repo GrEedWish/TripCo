@@ -45,7 +45,7 @@ public class Presenter {
     public void run() throws IOException {
     	
         xmlHandler();
-        //printlines();
+        printlines();
         viewHandler(modelHandler());
         
         //webPageViewer();
@@ -96,11 +96,11 @@ public class Presenter {
             options[2] = br.readLine().equals("true");
             options[3] = br.readLine().equals("true");
             options[4] = br.readLine().equals("true");
+            subSet = br.readLine().split(",");
         } finally {
             br.close();
         }   
-        File f = new File("GUI_OUTPUT.txt");
-        f.delete();
+        new File("GUI_OUTPUT.txt").delete();
     }
     
     private void viewWriter(String[][] route){

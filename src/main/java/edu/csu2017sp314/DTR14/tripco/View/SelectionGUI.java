@@ -28,20 +28,22 @@ public class SelectionGUI extends Application{
 	private String[] subSet;
 	private String xmlFile;
 	private String csvFile;
+	private Basic basic;
 
 	private TextArea subsetText;
 
 	public SelectionGUI(){
 		this.options = new boolean[5];
 		this.subSet = null;
+		basic = new Basic();
 	}
 
 	private Scene dialogScene(Stage stage){
 
-		GridPane grid = new Basic().newGridPane();
+		GridPane grid = basic.newGridPane();
 		//Welcome Text
 		String welcomes = "Select Options For Your Trip Planning";
-		grid.add(new Basic().setWelcomeWindow(welcomes), 0, 0, 3, 1);
+		grid.add(basic.setWelcomeWindow(welcomes), 0, 0, 3, 1);
 
 		grid.add(setSelectBox(), 1, 1);
 
@@ -54,22 +56,22 @@ public class SelectionGUI extends Application{
 	}
 
 	private VBox setSelectBox(){
-		VBox vbox = new Basic().newVBox(40);
+		VBox vbox = basic.newVBox(40);
 		vbox.getChildren().addAll(setMarkerBox(), setOptionBox());
 		return vbox;
 	}
 
 	private VBox setMarkerBox(){
-		Label label = new Basic().newLabel("Select optional Markers");
-		VBox vbox = new Basic().newVBox(10);
+		Label label = basic.newLabel("Select optional Markers");
+		VBox vbox = basic.newVBox(10);
 		vbox.getChildren().addAll(label,setMarkers());
 		return vbox;
 	}
 
 	private GridPane setMarkers(){
-		CheckBox name = new Basic().newCheckBox("Name");
-		CheckBox id = new Basic().newCheckBox("ID");
-		CheckBox miles = new Basic().newCheckBox("Mileage");
+		CheckBox name = basic.newCheckBox("Name");
+		CheckBox id = basic.newCheckBox("ID");
+		CheckBox miles = basic.newCheckBox("Mileage");
 		id.setOnAction(e -> {
 			options[0] = id.isSelected();
 		});
@@ -79,8 +81,8 @@ public class SelectionGUI extends Application{
 		name.setOnAction(e -> {
 			options[2] = name.isSelected();
 		});
-		GridPane gridpane = new Basic().newGridPane();
-		VBox vbox = new Basic().newVBox(5);
+		GridPane gridpane = basic.newGridPane();
+		VBox vbox = basic.newVBox(5);
 		vbox.getChildren().addAll(name, id, miles);
 		vbox.setAlignment(Pos.CENTER_LEFT);
 		gridpane.add(vbox, 1, 0, 1, 3);
@@ -88,23 +90,23 @@ public class SelectionGUI extends Application{
 	}
 	
 	private VBox setOptionBox(){
-		Label label = new Basic().newLabel("Select Additonal Opmimizations");
-		VBox vbox = new Basic().newVBox(20);
+		Label label = basic.newLabel("Select Additonal Opmimizations");
+		VBox vbox = basic.newVBox(20);
 		vbox.getChildren().addAll(label, SetOptions());
 		return vbox;
 	}
 
 	private GridPane SetOptions(){
-		CheckBox opt2 = new Basic().newCheckBox("2OPT");
-		CheckBox opt3 = new Basic().newCheckBox("3OPT");
+		CheckBox opt2 = basic.newCheckBox("2OPT");
+		CheckBox opt3 = basic.newCheckBox("3OPT");
 		opt2.setOnAction(e -> {
 			options[3] = opt2.isSelected();
 		});
 		opt3.setOnAction(e -> {
 			options[4] = opt3.isSelected();
 		});
-		GridPane gridpane = new Basic().newGridPane();
-		VBox vbox = new Basic().newVBox(5);
+		GridPane gridpane = basic.newGridPane();
+		VBox vbox = basic.newVBox(5);
 		vbox.getChildren().addAll(opt2, opt3);
 		vbox.setAlignment(Pos.CENTER_LEFT);
 		gridpane.add(vbox, 1, 0, 1, 3);
@@ -113,38 +115,36 @@ public class SelectionGUI extends Application{
 
 	private VBox setSubSetBox(){
 		//Subset fourth
-		Label label = new Basic().newLabel("Input Your Subset");
+		Label label = basic.newLabel("Input Your Subset");
 		String hints = "Select a subset of locations from the datafile. Seperate ID values of desired locations with a comma";
 		
-		Text subText = new Basic().newText(hints, 12, 200);
+		Text subText = basic.newText(hints, 12, 200);
 		subsetText = new TextArea();
 		if(subSet != null){
 			subsetText.setText(Arrays.toString(subSet).substring(1, Arrays.toString(subSet).length()-1));
 		}
 		subsetText.setWrapText(true);
 		subsetText.setMaxWidth(250);
-		VBox vbox = new Basic().newVBox(20);
+		VBox vbox = basic.newVBox(20);
 		vbox.getChildren().addAll(label, subText, subsetText);
 		return vbox;
 	}
 
 	private VBox setLauncher(Stage stage){
-		Button btn = new Basic().newButton("Plan Trip");
+		Button btn = basic.newButton("Plan Trip");
 		btn.setOnAction(e -> {
 			try {	
-				if(subSet == null){
-					if(subsetText.getText() != null)
-						subSet = toStandardStringArray(subsetText.getText());
-					else subSet = new String[0];
-					new SelectionWriter(subSet, xmlFile, csvFile).writeXML();
-				}
+				if(subsetText.getText() != null)
+					subSet = toStandardStringArray(subsetText.getText());
+				else subSet = new String[0];
+				new SelectionWriter(subSet, xmlFile, csvFile).writeXML();
                 writeResults();
 	        } catch (Exception ex) {
 	            Logger.getLogger(SelectionGUI.class.getName()).log(Level.SEVERE, null, ex);
 			}
 			stage.close();
 		});
-		VBox vbox = new Basic().newVBox(20);
+		VBox vbox = basic.newVBox(20);
 		vbox.getChildren().addAll(btn);
 		return vbox;
 	}
@@ -168,6 +168,8 @@ public class SelectionGUI extends Application{
 		    writer.println(options[2]);
 		    writer.println(options[3]);
 		    writer.println(options[4]);
+		    for(int i = 0; i < subSet.length; i++)
+		    	writer.print( (i == 0 ? "" : ",") + subSet[i].trim());
 		    writer.close();
 		} catch (IOException e) {
 		   // do something
