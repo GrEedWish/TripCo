@@ -17,23 +17,24 @@ public class XMLReader {
 		Scanner scan = new Scanner(new File(filename));
 		ArrayList<String> subs = new ArrayList<String>();
 		String temp;
-		while((temp = scan.nextLine().trim()) != null){
-			if(!checkValid(temp, "<?xml")) break;
-			if(!checkValid(temp, "<selection")) break;
-			if(!checkValid(temp, "<title")) break;
-			if(checkValid(temp, "<filename")){
+		while(true){
+			if(!checkValid(scan.nextLine().trim(), "<?xml")) break;
+			if(!checkValid(scan.nextLine().trim(), "<selection")) break;
+			if(!checkValid(scan.nextLine().trim(), "<title")) break;
+			if(checkValid(temp = scan.nextLine().trim(), "<filename")){
 				temp = temp.substring(temp.indexOf('>')+1);
 				temp = temp.substring(0, temp.indexOf('<'));
 				csvName.append(temp);
 			}
-			if(!checkValid(temp, "<destinations")) break;
-			while(checkValid(temp, "<id")){
+			if(!checkValid(scan.nextLine().trim(), "<destinations")) break;
+			while(checkValid(temp = scan.nextLine().trim(), "<id")){
+
 				temp = temp.substring(temp.indexOf('>')+1);
 				temp = temp.substring(0, temp.indexOf('<'));
 				subs.add(temp.trim());
 			} 
 			if(!checkValid(temp, "</destinations")) break;
-			if(checkValid(temp, "</selection")){
+			if(checkValid(scan.nextLine().trim(), "</selection")){
 				scan.close();
 				return subs.toArray(new String[0]);
 			}

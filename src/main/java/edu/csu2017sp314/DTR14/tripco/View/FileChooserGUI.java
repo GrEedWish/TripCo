@@ -28,20 +28,21 @@ public class FileChooserGUI extends Application{
 	private String xmlFile;
 	private String csvFile;
 	private String svgFile;
+	private Basic basic;
 	
 	private TextField newTextField;
 	
 	//Empty constructor, for javafx Application compliance
     public FileChooserGUI(){
-
+    	basic = new Basic();
     }
     
 	private Scene fileChooser(Stage stage){
 		//Welcome Text
 		
-		GridPane grid = new Basic().newGridPane();
+		GridPane grid = basic.newGridPane();
 		String welcomes = "Plan trips across the state of Colorado with TripCo!";
-		grid.add(new Basic().setWelcomeWindow(welcomes) ,0, 0, 3, 1);
+		grid.add(basic.setWelcomeWindow(welcomes) ,0, 0, 3, 1);
 		
 		//Choose from existing selction file
 		//File Chooser for existing selection xml
@@ -60,9 +61,9 @@ public class FileChooserGUI extends Application{
 	}
 	
 	private VBox setXMLFileChooser(){
-		FileChooser chooser = new Basic().newFileChooser("Choose existing selection");
-		Label label = new Basic().newLabel("Start from existing Selection");
-		Button btn = new Basic().newButton("Choose XML File");
+		FileChooser chooser = basic.newFileChooser("Choose existing selection");
+		Label label = basic.newLabel("Start from existing Selection");
+		Button btn = basic.newButton("Choose XML File");
 		Text warnText = new Text();
 		btn.setOnAction(e ->{ 
 			File in = chooser.showOpenDialog(new Stage());
@@ -78,30 +79,30 @@ public class FileChooserGUI extends Application{
 						} catch (FileNotFoundException e1) {
 							e1.printStackTrace();
 						}
-                        new Basic().newWarnText(warnText, in.getName(), false);
+                        basic.newWarnText(warnText, in.getName(), false);
                     } else{
-						new Basic().newWarnText(warnText, "XML", true);
+						basic.newWarnText(warnText, "XML", true);
 					}	
 				}
 			}
 		});
-		VBox vbox = new Basic().newVBox(40);
+		VBox vbox = basic.newVBox(40);
 		vbox.getChildren().addAll(label, btn, warnText);
 		return vbox;
 	}
 
 	private VBox setNewName(){
-		Label label = new Basic().newLabel("Name Your Name TripCo");
-		newTextField = new Basic().newTextField("NewSelectionName");
-		VBox vbox = new Basic().newVBox(20);
+		Label label = basic.newLabel("Name Your Name TripCo");
+		newTextField = basic.newTextField("NewSelectionName");
+		VBox vbox = basic.newVBox(20);
 		vbox.getChildren().addAll(label, newTextField, new Text());
 		return vbox;
 	}
 
 	private VBox setCSVFileChooser(){
-		Label label = new Basic().newLabel("Start from existing DataFile");
-		Button btn = new Basic().newButton("Choose CSV File");
-		FileChooser chooser = new Basic().newFileChooser();
+		Label label = basic.newLabel("Start from existing DataFile");
+		Button btn = basic.newButton("Choose CSV File");
+		FileChooser chooser = basic.newFileChooser();
 		//Grab data csv, grab name from text field, make select new empty Selection
 		Text warnText = new Text();
 		btn.setOnAction(e ->{ 
@@ -111,25 +112,25 @@ public class FileChooserGUI extends Application{
 				if(name.length()>4){
 					if(name.substring(name.length()-4, name.length()).equalsIgnoreCase(".csv")){
 						csvFile = in.getAbsolutePath();
-						new Basic().newWarnText(warnText, name, false);
+						basic.newWarnText(warnText, name, false);
 					}
-					else new Basic().newWarnText(warnText, "CSV", true);
+					else basic.newWarnText(warnText, "CSV", true);
 				}
 				
 				
 			}
 		});
 		//Grid layout
-		VBox vbox = new Basic().newVBox(40);
+		VBox vbox = basic.newVBox(40);
 		vbox.getChildren().addAll(label, btn, warnText);
 		return vbox;
 	}
 
 	private VBox setBackGroundImage(){
 		//Select Background SVG
-		Label label = new Basic().newLabel("Select Background Image");
-		FileChooser chooser = new Basic().newFileChooser("Choose background");
-		Button btn = new Basic().newButton("Choose BG File");
+		Label label = basic.newLabel("Select Background Image");
+		FileChooser chooser = basic.newFileChooser("Choose background");
+		Button btn = basic.newButton("Choose BG File");
 		Text warnText = new Text();
 		btn.setOnAction(e -> {
 			File back = chooser.showOpenDialog(new Stage());
@@ -138,19 +139,19 @@ public class FileChooserGUI extends Application{
 				if(name.length() > 4){
 					if(name.substring(name.length()-4, name.length()).equalsIgnoreCase(".svg")){
 						svgFile = back.getAbsolutePath();
-						new Basic().newWarnText(warnText, name, false);
-					} else new Basic().newWarnText(warnText, "SVG", true);
+						basic.newWarnText(warnText, name, false);
+					} else basic.newWarnText(warnText, "SVG", true);
 				}
 			}
 		});
-		VBox vbox = new Basic().newVBox(40);
+		VBox vbox = basic.newVBox(40);
 		vbox.getChildren().addAll(label, btn, warnText);
 		return vbox;
 	}
 
 	private VBox setSumbitFile(Stage stage){
 		Text warnText = new Text();
-		Button btn = new Basic().newButton("Start Planning Trip!");
+		Button btn = basic.newButton("Start Planning Trip!");
 		btn.setOnAction(e->{
 			String entered = newTextField.getText();
 			if(xmlFile == null){
@@ -164,7 +165,7 @@ public class FileChooserGUI extends Application{
 			}
 			if(csvFile == null || csvFile.equals("")){
 				String warns = "No Selection file or new csv file chosen";
-				new Basic().newWarnText(warnText, warns, true);
+				basic.newWarnText(warnText, warns, true);
 			}
 			else{
 				try {
@@ -176,13 +177,13 @@ public class FileChooserGUI extends Application{
 				}
 			}
 		});
-		VBox vbox = new Basic().newVBox(10);
+		VBox vbox = basic.newVBox(10);
 		vbox.getChildren().addAll(btn, warnText);
 		return vbox;
 	}
 
 	private VBox setLauncher(Stage stage){
-		VBox vbox = new Basic().newVBox(20);
+		VBox vbox = basic.newVBox(20);
 		vbox.getChildren().addAll(setNewName(), setSumbitFile(stage), new Text());
 		return vbox;
 	}
